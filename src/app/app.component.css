@@ -1,0 +1,21 @@
+.navbar {
+  display: flex;
+  padding: 5vh 5vw 5vh 5vw;
+  color: gray;
+  width: full;
+  position: sticky;
+  justify-content: space-between;
+  align-content: space-between;
+  align-items: center;
+  div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    gap: 1vw;
+  }
+  a {
+    color: gray;
+    font-size: large;
+  }
+}
