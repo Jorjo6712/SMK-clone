@@ -10,3 +10,9 @@ import { Component } from '@angular/core';
 export class ArtShowcaseComponent {
 
 }
+
+export interface IArt {
+  artId: number,
+  artDominantColor: string,
+}
+

@@ -1,13 +1,11 @@
 import { Component } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
-import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-home',
   standalone: true,
   imports: [
     ButtonModule,
-    CommonModule,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'

@@ -8,8 +8,15 @@
   </div>
 
   <div class="links">
-    <a> hello </a>
-    <a> hi </a>
+    <a> Søg </a>
+    <a> Om SMK Open </a>
+    <p-dropdown
+      [options]="languages"
+      [(ngModel)]="selectedLang"
+      optionLabel="name"
+      placeholder="Da"
+    />
+
   </div>
 </nav>
 <router-outlet> </router-outlet>
