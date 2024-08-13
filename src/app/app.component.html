@@ -1,22 +1,24 @@
 <nav class="navbar">
    <div>
     <p-image
-        src="https://www.smk.dk/wp-content/uploads/2018/08/SMK_MiniLogo_Black.png"
+        src="../assets/SMK_MiniLogo_White.png"
         alt="Image"
-        width="150"
+        width="200"
     />
   </div>
 
   <div class="links">
-    <a> Søg </a>
-    <a> Om SMK Open </a>
+    <a routerLink="/" routerLinkActive="active" *ngIf="selectedLang?.name === 'DA'; else SearchElse"> Søg </a>
+    <ng-template #SearchElse> <a routerLink="/" routerLinkActive="active"> Search </a> </ng-template>
+    <a href="https://www.smk.dk/article/om-smk-open/" target="_blank" *ngIf="selectedLang?.name === 'DA'; else AboutElse"> Om SMK OPEN </a>
+    <ng-template #AboutElse> <a href="https://www.smk.dk/article/om-smk-open/" target="_blank"> About SMK OPEN </a> </ng-template>
     <p-dropdown
       [options]="languages"
       [(ngModel)]="selectedLang"
       optionLabel="name"
-      placeholder="Da"
-    />
-
+      (onChange)="onLanguageChange($event)"
+      styleClass="p-dropdown"
+    ></p-dropdown>
   </div>
 </nav>
 <router-outlet> </router-outlet>

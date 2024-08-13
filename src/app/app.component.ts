@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 import { ImageModule } from 'primeng/image';
 import { DropdownModule } from 'primeng/dropdown';
 import { FormsModule } from '@angular/forms';
@@ -11,6 +11,8 @@ import { CommonModule } from '@angular/common';
   imports:
   [
     RouterOutlet,
+    RouterLink,
+    RouterLinkActive,
     ImageModule,
     DropdownModule,
     CommonModule,
@@ -23,19 +25,26 @@ import { CommonModule } from '@angular/common';
 export class AppComponent implements OnInit {
   title = 'SMK-Clone';
 
-  languages: Lang[] | undefined;
 
-    selectedLang: Lang | undefined;
+  languages = [
+    { name: 'EN', code: 'EN' },
+    { name: 'DA', code: 'DA' },
+  ];
 
-    ngOnInit() {
-        this.languages = [
-            { name: 'Danish', code: 'Da' },
-            { name: 'English', code: 'En' }
-        ];
+  selectedLang: any;
+
+  ngOnInit() {
+    const storedLang = localStorage.getItem('selectedLang');
+
+    if (storedLang) {
+      this.selectedLang = JSON.parse(storedLang);
+    } else {
+      this.selectedLang = { name: 'Danish', code: 'DA' };
     }
-}
+  }
+  onLanguageChange(event: any) {
+    this.selectedLang = event.value;
+    localStorage.setItem('selectedLang', JSON.stringify(this.selectedLang));
+  }
 
-interface Lang {
-    name: string;
-    code: string;
 }
