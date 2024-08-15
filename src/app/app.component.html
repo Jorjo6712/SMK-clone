@@ -1,3 +1,7 @@
+<head>
+  <link rel="icon" type="image/png" sizes="32x32" href="../favicon.png">
+</head>
+
 <nav class="navbar">
    <div>
     <p-image
@@ -17,7 +21,7 @@
       [(ngModel)]="selectedLang"
       optionLabel="name"
       (onChange)="onLanguageChange($event)"
-      styleClass="p-dropdown"
+      [style] = "{'box-shadow': 'none', 'transition' : 'none', 'background-color' : 'transparent'}"
     ></p-dropdown>
   </div>
 </nav>
