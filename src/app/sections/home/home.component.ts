@@ -16,7 +16,7 @@ import { ArtworkService } from '../art-showcase/artwork.service';
 })
 export class HomeComponent {
 
-  artworks : object = []
+  artworks : any = []
 
   constructor(private router: Router, private service: ArtworkService) {
      this.artworks = this.service.artworks
