@@ -5,12 +5,13 @@ import axios from 'axios';
   providedIn: 'root',
 })
 export class ArtworkService {
-  private baseApiUrl = 'https://api.smk.dk/api/v1/art/search/';
+  private baseUrl = `https://api.smk.dk/api/v1/art/search/?keys=*&facetNum=-1&facets=creator,artist,colors,role_attributed_to,role_earlier_ascribed_to,role_workshop_of,role_follower,role_after,role_school,role_imitator_of,role_copy_after,role_after_model_by,role_publisher,role_printer,role_artist,creator_nationality,creator_gender,content_person,content_subject,object_names,techniques,materials,medium&lang=da&rows=100`;
+
   private offset = 0;
   artworks: any[] = [];
 
   constructor() {
-    this.fetchArtworks('*'); // Fetch initial artworks with default query
+    this.fetchArtworks();
   }
 
   private async fetchArtworks(query: string = '*'): Promise<void> {

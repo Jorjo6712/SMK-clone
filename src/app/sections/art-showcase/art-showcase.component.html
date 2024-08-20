@@ -1,6 +1,18 @@
-<div *ngIf="artwork">
-  <h1>{{ artwork.title }}</h1>
-  <img [src]="artwork.imageUrl" alt="{{ artwork.title }}">
-  <p>{{ artwork.description }}</p>
+<div class="showcase-container" *ngIf="artwork">
+
+  <div class="details-container">
+    <p> {{ artwork.artist }} </p>
+    <h2> {{ artwork.title }} </h2>
+  </div>
+
+  <p-image
+    [src]="artwork.imageUrl"
+    alt = "{{artwork.title}}"
+    width="800"
+    height="800"
+    [preview]="true"
+    [style] = '{"margin-right" : "3vw"}'
+  />
+
 </div>
 

@@ -25,7 +25,6 @@ import { CommonModule } from '@angular/common';
 export class AppComponent implements OnInit {
   title = 'SMK-Clone';
 
-
   languages = [
     { name: 'EN', code: 'EN' },
     { name: 'DA', code: 'DA' },
@@ -33,18 +32,24 @@ export class AppComponent implements OnInit {
 
   selectedLang: any;
 
+  constructor(
+  ) {}
+
   ngOnInit() {
     const storedLang = localStorage.getItem('selectedLang');
 
     if (storedLang) {
       this.selectedLang = JSON.parse(storedLang);
     } else {
-      this.selectedLang = { name: 'Danish', code: 'DA' };
+      this.selectedLang = { name: 'DA', code: 'DA' };
     }
+
   }
   onLanguageChange(event: any) {
     this.selectedLang = event.value;
     localStorage.setItem('selectedLang', JSON.stringify(this.selectedLang));
   }
+
+
 
 }

@@ -1,4 +1,11 @@
 @import "primeng/resources/themes/lara-light-blue/theme.css";
 @import "primeng/resources/primeng.css";
 
+@font-face {
+  font-family: "hill";
+  src: url("./assets/hill_regular.woff");
+}
+
+* { font-family: "hill" }
 html { background-color: #111111; }
+
