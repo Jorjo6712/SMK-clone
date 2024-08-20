@@ -1,6 +1,19 @@
-<div *ngFor="let artwork of artworks">
-  <div (click)="viewArtwork(artwork.id)">
-    <img [src]="artwork.imageUrl" alt="{{ artwork.title }}">
-    <p>{{ artwork.title }}</p>
+<div class="container">
+  <div class="photo-gallery">
+    <div
+      *ngFor="let artwork of artworks"
+      class="card"
+      (click)="viewArtwork(artwork.obNumber)"
+    >
+      <div class="card-img-container">
+        <img [src]="artwork.imageUrl" alt="" class="card-img" />
+      </div>
+      <div class="card-info">
+        <h3>{{ artwork.title }}</h3>
+        <p>{{ artwork.artist }}</p>
+        <p>{{ artwork.year }}</p>
+        <p>{{ artwork.obNumber }}</p>
+      </div>
+    </div>
   </div>
 </div>
