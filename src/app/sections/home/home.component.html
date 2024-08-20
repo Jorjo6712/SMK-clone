@@ -1,4 +1,13 @@
 <div class="container">
+  <!-- Search Bar -->
+  <input
+    type="text"
+    [(ngModel)]="searchQuery"
+    (ngModelChange)="onSearch()"
+    placeholder="Search artworks..."
+    class="search-bar"
+  />
+
   <div class="photo-gallery">
     <div
       *ngFor="let artwork of artworks"
@@ -16,8 +25,5 @@
       </div>
     </div>
   </div>
-
-  <!-- Button to load more artworks -->
-  <button (click)="loadMore()" class="load-more-button">Load More</button>
 </div>
   
