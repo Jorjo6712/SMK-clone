@@ -1,41 +1,37 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { ArtworkService } from '../art-showcase/artwork.service';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
   artworks: any[] = [];
+  searchQuery: string = '*'; // Default search query
 
   constructor(private router: Router, private service: ArtworkService) {}
 
   ngOnInit() {
-    // Load initial artworks
-    this.service
-      .fetchArtworks()
-      .then(() => {
-        this.artworks = this.service.artworks;
-      })
-      .catch((error) => {
-        console.error('Error loading artworks in component:', error);
-      });
+    this.performSearch(); // Fetch initial artworks with default query
   }
 
-  loadMore() {
-    this.service
-      .loadMoreArtworks()
-      .then(() => {
-        this.artworks = this.service.artworks;
-      })
-      .catch((error) => {
-        console.error('Error loading more artworks:', error);
-      });
+  async performSearch() {
+    await this.service.searchArtworks(this.searchQuery);
+    this.artworks = this.service.artworks;
+  }
+
+  async onSearch() {
+    if (this.searchQuery.trim()) {
+      await this.performSearch();
+    } else {
+      this.artworks = []; // Clear results if the search query is empty
+    }
   }
 
   viewArtwork(obNumber: string) {
