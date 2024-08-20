@@ -1,0 +1,23 @@
+.showcase-container {
+  display: flex;
+  justify-content: space-between;
+  align-content: space-between;
+}
+
+.details-container {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    margin: 0vh 10vw 0vh 5vw;
+    p {
+      color: white;
+      font-size: large;
+    }
+
+    h2 {
+      color: white;
+      font-size: x-large;
+      margin: 0;
+    }
+  }
+

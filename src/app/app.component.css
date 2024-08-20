@@ -1,0 +1,39 @@
+.navbar {
+  display: flex;
+  padding: 3vh 5vw 3vh 3vw;
+  width: 100%;
+  position: sticky;
+  justify-content: space-between;
+  align-content: space-between;
+  align-items: center;
+  div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+    align-items: center;
+    gap: 1vw;
+  }
+  a {
+    color: white;
+    font-size: large;
+    font-weight: bolder;
+    transition: 0.1s;
+    opacity: 0.5;
+    text-decoration: none;
+    &:hover {
+      opacity: 1;
+      cursor: pointer;
+    }
+  }
+
+.active {
+    color: white;
+    opacity: 1;
+}
+
+
+
+}
+

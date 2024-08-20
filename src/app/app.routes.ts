@@ -6,7 +6,7 @@ import { NgModule } from '@angular/core';
 export const routes: Routes = [
   {path: '', component:HomeComponent},
   {path: 'home', component:HomeComponent},
-  {path: 'art', component:ArtShowcaseComponent}
+  {path: 'art/:id', component:ArtShowcaseComponent}
 ];
 
 

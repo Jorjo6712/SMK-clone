@@ -1,3 +1,6 @@
-<div>
-  <p-button label="Submit" />
+<div *ngFor="let artwork of artworks">
+  <div (click)="viewArtwork(artwork.id)">
+    <img [src]="artwork.imageUrl" alt="{{ artwork.title }}">
+    <p>{{ artwork.title }}</p>
+  </div>
 </div>
