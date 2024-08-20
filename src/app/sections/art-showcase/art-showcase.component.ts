@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [
     ImageModule,
-    CommonModule
+    CommonModule,
   ],
   templateUrl: './art-showcase.component.html',
   styleUrl: './art-showcase.component.css'
@@ -20,11 +20,12 @@ export class ArtShowcaseComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private artworkService: ArtworkService
+    private artworkService: ArtworkService,
   ) {}
 
   ngOnInit(): void {
-    const artId = Number(this.route.snapshot.paramMap.get('id'));
+    const artId = String(this.route.snapshot.paramMap.get('id'));
     this.artwork = this.artworkService.getArtworkById(artId);
+
   }
 }

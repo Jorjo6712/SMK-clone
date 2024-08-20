@@ -4,7 +4,7 @@
 
 <nav class="navbar">
    <div>
-    <p-image
+    <p-image routerLink="/"
         src="../assets/SMK_MiniLogo_White.png"
         alt="Image"
         width="200"
@@ -21,7 +21,8 @@
       [(ngModel)]="selectedLang"
       optionLabel="name"
       (onChange)="onLanguageChange($event)"
-      [style] = "{'box-shadow': 'none', 'transition' : 'none', 'background-color' : 'transparent'}"
+      appendTo="body"
+      [style] = "{'box-shadow': 'none', 'transition' : 'none', 'background-color' : 'transparent',}"
     ></p-dropdown>
   </div>
 </nav>

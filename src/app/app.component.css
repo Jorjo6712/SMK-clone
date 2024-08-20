@@ -18,6 +18,7 @@
   a {
     color: white;
     font-size: large;
+    font-weight: bolder;
     transition: 0.1s;
     opacity: 0.5;
     text-decoration: none;
@@ -27,14 +28,12 @@
     }
   }
 
-  :host ::ng-deep {
-    p-dropdown {
-      &:active:focus {
-        box-shadow: none;
-        transition: none;
-      }
-    }
-  }
+.active {
+    color: white;
+    opacity: 1;
+}
+
 
 
 }
+
