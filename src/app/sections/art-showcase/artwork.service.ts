@@ -11,22 +11,11 @@ export class ArtworkService {
   artworks: any[] = [];
 
   constructor() {
-    this.fetchArtworks();
   }
 
-  private async fetchArtworks(query: string = '*'): Promise<void> {
+  public async fetchArtworks(query: string = '*'): Promise<void> {
     try {
-      const response = await axios.get(this.baseApiUrl, {
-        params: {
-          keys: query,
-          facetNum: -1,
-          facets:
-            'creator,artist,colors,role_attributed_to,role_earlier_ascribed_to,role_workshop_of,role_follower,role_after,role_school,role_imitator_of,role_copy_after,role_after_model_by,role_publisher,role_printer,role_artist,creator_nationality,creator_gender,content_person,content_subject,object_names,techniques,materials,medium',
-          lang: 'da',
-          offset: this.offset,
-          rows: 24,
-        },
-      });
+      const response = await axios.get(this.baseUrl,);
       const items = response.data?.items || [];
 
       // Replace existing artworks with new results
@@ -43,6 +32,11 @@ export class ArtworkService {
     } catch (error) {
       console.error('Error fetching artworks:', error);
     }
+  }
+
+  getArtworkById(id: string) {
+    return this.artworks.find(art => art.id === id);
+
   }
 
   public async searchArtworks(query: string): Promise<void> {

@@ -12,7 +12,7 @@ import { ArtworkService } from '../art-showcase/artwork.service';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  artworks: any[] = [];
+  artworks: any = null;
   searchQuery: string = '*'; // Default search query
 
   constructor(private router: Router, private service: ArtworkService) {}
@@ -34,7 +34,7 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  viewArtwork(obNumber: string) {
-    this.router.navigate(['/art-showcase', obNumber]);
+  viewArtwork(artId: string) {
+    this.router.navigate(['/art/', artId]);
   }
 }
