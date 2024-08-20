@@ -7,14 +7,15 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-art-showcase',
   standalone: true,
+
   imports: [
     ImageModule,
     CommonModule,
   ],
+  
   templateUrl: './art-showcase.component.html',
-  styleUrl: './art-showcase.component.css'
+  styleUrls: ['./art-showcase.component.css'],
 })
-
 export class ArtShowcaseComponent implements OnInit {
   artwork: any = null;
 
@@ -24,8 +25,10 @@ export class ArtShowcaseComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    const obNumber = this.route.snapshot.paramMap.get('obNumber') || '';
+    this.artwork = this.artworkService.getArtworkByObNumber(obNumber);
+
     const artId = String(this.route.snapshot.paramMap.get('id'));
     this.artwork = this.artworkService.getArtworkById(artId);
-
   }
 }

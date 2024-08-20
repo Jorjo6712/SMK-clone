@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-import { ButtonModule } from 'primeng/button';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ArtworkService } from '../art-showcase/artwork.service';
@@ -7,23 +6,39 @@ import { ArtworkService } from '../art-showcase/artwork.service';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [
-    ButtonModule,
-    CommonModule
-  ],
+  imports: [CommonModule],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+  styleUrls: ['./home.component.css'],
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
+  artworks: any[] = [];
 
-  artworks : any = []
+  constructor(private router: Router, private service: ArtworkService) {}
 
-  constructor(private router: Router, private service: ArtworkService) {
-     this.artworks = this.service.artworks
+  ngOnInit() {
+    // Load initial artworks
+    this.service
+      .fetchArtworks()
+      .then(() => {
+        this.artworks = this.service.artworks;
+      })
+      .catch((error) => {
+        console.error('Error loading artworks in component:', error);
+      });
   }
 
+  loadMore() {
+    this.service
+      .loadMoreArtworks()
+      .then(() => {
+        this.artworks = this.service.artworks;
+      })
+      .catch((error) => {
+        console.error('Error loading more artworks:', error);
+      });
+  }
 
-  viewArtwork(artId: number) {
-    this.router.navigate(['/art', artId]); // Navigates to /art/:id
+  viewArtwork(obNumber: string) {
+    this.router.navigate(['/art-showcase', obNumber]);
   }
 }

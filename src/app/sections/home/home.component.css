@@ -1,3 +1,94 @@
-body {
-  background-color: gray;
+/* Container for the gallery */
+.container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: auto;
+  color:white;
+}
+
+/* Title of the gallery */
+.title {
+  text-align: center;
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+/* Gallery container */
+.photo-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+/* Card container */
+.card {
+  display: flex;
+  flex-direction: column;
+  width: calc(20% - 20px); /* 20% of the container width, minus the gap */
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  border: 1px solid black;
+}
+
+/* Image container */
+.card-img-container {
+  flex: 1; /* Allows the image container to grow */
+  display: flex;
+}
+
+/* Image inside the card */
+.card-img {
+  width: 100%;
+  height: 200px; /* Fixed height for consistent image display */
+  object-fit: cover; /* Ensures the image covers the space */
+}
+
+/* Information at the bottom of the card */
+.card-info {
+  padding: 15px;
+  /* background-color: #f9f9f9; */
+  text-align: center;
+  flex-shrink: 0; /* Ensures the info section does not shrink */
+}
+
+/* Card hover effect */
+.card:hover {
+  transform: scale(1.05);
+}
+
+/* Responsive design */
+@media (max-width: 1200px) {
+  .card {
+    width: calc(25% - 20px); /* 4 cards per row on medium screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .card {
+    width: calc(33.33% - 20px); /* 3 cards per row on small screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    width: calc(50% - 20px); /* 2 cards per row on extra-small screens */
+  }
+}
+
+.load-more-button {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+.load-more-button:hover {
+  background-color: #0056b3;
 }
