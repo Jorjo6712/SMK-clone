@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ImageModule } from 'primeng/image';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ArtworkService } from './artwork.service';
 import { CommonModule } from '@angular/common';
 
@@ -18,14 +18,18 @@ import { CommonModule } from '@angular/common';
 })
 export class ArtShowcaseComponent implements OnInit {
   artwork: any = null;
+  obNumber: string = '';
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private artworkService: ArtworkService,
   ) {}
 
-  ngOnInit(): void {
-    const artId = String(this.route.snapshot.paramMap.get('id'));
-    this.artwork = this.artworkService.getArtworkById(artId);
-  }
-}
+ async ngOnInit(): Promise<void> {
+    this.obNumber = this.route.snapshot.paramMap.get('id')!;
+    this.artwork = await this.artworkService.fetchArtworkByObNumber(this.obNumber);
+    if (!this.artwork) {
+      this.router.navigate(['/404'])
+    }
+  }}

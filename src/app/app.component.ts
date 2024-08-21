@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
+import { RouterOutlet, RouterLink, RouterLinkActive, Router } from '@angular/router';
 import { ImageModule } from 'primeng/image';
 import { DropdownModule } from 'primeng/dropdown';
 import { FormsModule } from '@angular/forms';
@@ -32,8 +32,7 @@ export class AppComponent implements OnInit {
 
   selectedLang: any;
 
-  constructor(
-  ) {}
+  constructor( private router: Router ) {}
 
   ngOnInit() {
     const storedLang = localStorage.getItem('selectedLang');
@@ -48,6 +47,9 @@ export class AppComponent implements OnInit {
   onLanguageChange(event: any) {
     this.selectedLang = event.value;
     localStorage.setItem('selectedLang', JSON.stringify(this.selectedLang));
+    location.reload() /* FIX: Stupid fucking code that refreshes whole page just to properly refetch,
+                               fix if possible
+                      */
   }
 
 

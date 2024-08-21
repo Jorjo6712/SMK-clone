@@ -12,7 +12,7 @@
     <div
       *ngFor="let artwork of artworks"
       class="card"
-      (click)="viewArtwork(artwork.id)"
+      (click)="viewArtwork(artwork.obNumber)"
     >
       <div class="card-img-container">
         <img [src]="artwork.imageUrl" alt="" class="card-img" />
