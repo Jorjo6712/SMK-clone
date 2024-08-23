@@ -25,4 +25,6 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
-# SMK-clone
+# Documentation:
+
+https://docs.google.com/document/d/1NeLyIhlNc3O4gLyyYtGStvV4WyJ8tEP0NI8AoX8bOQk/edit?usp=sharing
